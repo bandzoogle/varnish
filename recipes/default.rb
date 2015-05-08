@@ -22,14 +22,14 @@ include_recipe 'varnish::repo' if node['varnish']['use_default_repo']
 
 package 'varnish'
 
-template node['varnish']['default'] do
-  source node['varnish']['conf_source']
-  cookbook node['varnish']['conf_cookbook']
-  owner 'root'
-  group 'root'
-  mode 0644
-  notifies 'restart', 'service[varnish]', :delayed
-end
+# template node['varnish']['default'] do
+#   source node['varnish']['conf_source']
+#   cookbook node['varnish']['conf_cookbook']
+#   owner 'root'
+#   group 'root'
+#   mode 0644
+#   notifies 'restart', 'service[varnish]', :delayed
+# end
 
 template "#{node['varnish']['dir']}/#{node['varnish']['vcl_conf']}" do
   source node['varnish']['vcl_source']
